@@ -46,8 +46,8 @@
     </div>
 
     <div class="containerFather">
-      <div class="flex justify-center items-center h-full w-full">
-        <div class="grid gap-8">
+      <div class="flex justify-center items-center">
+        <div class="grid gap-8 break-words w-full max-w-md">
           <section
             id="login"
             class="bg-gradient-to-r from-orange-500 to-yellow-400 rounded-3xl my-14 dark:bg-gradient-to-r dark:from-blue-500 dark:to-purple-500"
@@ -73,7 +73,9 @@
                     type="text"
                     placeholder="Username"
                   />
-                  <p class="text-sm text-red-500">User doesn't exist</p>
+                  <p class="break-words text-sm text-red-500">
+                    User doesn't exist
+                  </p>
                 </div>
                 <div>
                   <label
@@ -87,7 +89,9 @@
                     type="password"
                     placeholder="Password"
                   />
-                  <p class="text-sm text-red-500">Incorrect password</p>
+                  <p class="break-words text-sm text-red-500">
+                    Incorrect password
+                  </p>
                 </div>
                 <a
                   href="#"

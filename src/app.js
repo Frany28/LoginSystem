@@ -4,19 +4,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (enlace && contenedor) {
     enlace.addEventListener("click", (event) => {
-      // Cambiamos el contenido del contenedor principal
       contenedor.innerHTML = `
       <section class="flex justify-center items-center h-full w-full">
         <div class="grid gap-8 w-full max-w-md">
           <section
             id="sign-up"
-            class="bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl my-3"
+            class="bg-gradient-to-r from-orange-500 to-yellow-400 rounded-3xl my-14 dark:bg-gradient-to-r dark:from-blue-500 dark:to-purple-500"
           >
             <div
               class="border-8 border-transparent rounded-xl bg-white dark:bg-gray-900 shadow-xl p-8 m-2"
             >
               <div class="titleReg text-center">
-                <h1 class="text-3xl font-bold cursor-default dark:text-gray-300 text-gray-900">
+                <h1 class="text-5xl font-bold text-center cursor-default text-orange-950 dark:text-gray-300">
                   Sign Up
                 </h1>
               </div>
@@ -25,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <label for="newUsername" class="block mb-2 text-lg dark:text-gray-300">Username</label>
                   <input
                     id="newUsername"
-                    class="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 transition transform hover:scale-105 duration-300"
+                    class="border p-3 shadow-md bg-orange-100 text-orange-950 border-orange-100 rounded-lg w-full focus:ring-2 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 focus:ring-blue-500 transition transform hover:scale-105 duration-300"
                     type="text"
                     placeholder="Name"
                   />
@@ -35,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <label for="email" class="block mb-2 text-lg dark:text-gray-300">Email</label>
                   <input
                     id="email"
-                    class="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 transition transform hover:scale-105 duration-300"
+                    class="border p-3 shadow-md bg-orange-100 text-orange-950 border-orange-100 rounded-lg w-full focus:ring-2 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 focus:ring-blue-500 transition transform hover:scale-105 duration-300"
                     type="email"
                     placeholder="Email"
                   />
@@ -45,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <label for="newPassword" class="block mb-2 text-lg dark:text-gray-300">Password</label>
                   <input
                     id="newPassword"
-                    class="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 transition transform hover:scale-105 duration-300"
+                    class="border p-3 shadow-md bg-orange-100 text-orange-950 border-orange-100 rounded-lg w-full focus:ring-2 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 focus:ring-blue-500 transition transform hover:scale-105 duration-300"
                     type="password"
                     placeholder="Password"
                   />
@@ -55,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <label for="confirmPassword" class="block mb-2 text-lg dark:text-gray-300">Confirm Password</label>
                   <input
                     id="confirmPassword"
-                    class="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 transition transform hover:scale-105 duration-300"
+                    class="border p-3 shadow-md bg-orange-100 text-orange-950 border-orange-100 rounded-lg w-full focus:ring-2 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 focus:ring-blue-500 transition transform hover:scale-105 duration-300"
                     type="password"
                     placeholder="Confirm Password"
                   
@@ -64,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div>
                   <button
-                    class="w-full p-3 mt-4 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg hover:scale-105 transition transform duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="w-full p-3 mt-4 text-white bg-gradient-to-r from-orange-500 to-yellow-400 rounded-lg hover:scale-105 transition transform duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gradient-to-r dark:from-blue-500 dark:to-purple-500"
                     type="submit"
                   >
                     Sign Up
@@ -86,14 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+//Evento para cambiar el tema
 document.addEventListener("DOMContentLoaded", () => {
-  document.documentElement.classList.toggle(
-    "dark",
-    localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-  );
-
   const toggle = document.getElementById("toggle");
 
   if (document.documentElement.classList.contains("dark")) {
@@ -107,6 +100,78 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       document.documentElement.classList.remove("dark");
       localStorage.theme = "light";
+    }
+  });
+
+  document.documentElement.classList.toggle(
+    "dark",
+    localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+  );
+});
+
+//Evento para comprobar los datos
+document.addEventListener("DOMContentLoaded", () => {
+  const usernameInput = document.getElementById("username");
+  const passwordInput = document.getElementById("password");
+  const usernameError = usernameInput.nextElementSibling;
+  const passwordError = passwordInput.nextElementSibling;
+  const form = document.querySelector("form");
+
+  usernameError.style.display = "none";
+  passwordError.style.display = "none";
+
+  usernameInput.addEventListener("input", () => {
+    const username = usernameInput.value.trim();
+    const usernameRegex = /^[a-zA-Z0-9_]{4,16}$/;
+
+    if (!usernameRegex.test(username)) {
+      usernameError.style.display = "block";
+      usernameError.textContent =
+        "Username must be 4 to 16 characters and can only contain letters, numbers, and underscores.";
+    } else {
+      usernameError.style.display = "none";
+    }
+  });
+
+  passwordInput.addEventListener("input", () => {
+    const password = passwordInput.value.trim();
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
+
+    if (!passwordRegex.test(password)) {
+      passwordError.style.display = "block";
+      passwordError.textContent =
+        "Password must be at least 8 characters long, with at least one uppercase letter, one lowercase letter, and one number.";
+    } else {
+      passwordError.style.display = "none";
+    }
+  });
+
+  form.addEventListener("submit", (event) => {
+    let hasError = false;
+
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+    const usernameRegex = /^[a-zA-Z0-9_]{4,16}$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
+
+    if (!usernameRegex.test(username)) {
+      usernameError.style.display = "block";
+      usernameError.textContent =
+        "Username must be 4 to 16 characters and can only contain letters, numbers, and underscores.";
+      hasError = true;
+    }
+
+    if (!passwordRegex.test(password)) {
+      passwordError.style.display = "block";
+      passwordError.textContent =
+        "Password must be at least 8 characters long, with at least one uppercase letter, one lowercase letter, and one number.";
+      hasError = true;
+    }
+
+    if (hasError) {
+      event.preventDefault();
     }
   });
 });
