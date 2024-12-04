@@ -89,10 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.getElementById("toggle");
 
-  if (document.documentElement.classList.contains("dark")) {
-    toggle.checked = true;
-  }
-
   toggle.addEventListener("change", () => {
     if (toggle.checked) {
       document.documentElement.classList.add("dark");
@@ -102,13 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.theme = "light";
     }
   });
-
-  document.documentElement.classList.toggle(
-    "dark",
-    localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-  );
 });
 
 //Evento para comprobar los datos
