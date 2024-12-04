@@ -89,6 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.getElementById("toggle");
 
+  //Revisa si el modo oscuro ya está activo
+  if (document.documentElement.classList.contains("dark")) {
+    toggle.checked = true;
+  }
+
+  //Alternaentre modo claro y oscuro
   toggle.addEventListener("change", () => {
     if (toggle.checked) {
       document.documentElement.classList.add("dark");
